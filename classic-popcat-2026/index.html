@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>POPCAT CLASSIC</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: sans-serif;
+                user-select: none;
+            }
+
+            .box {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                height: 100vh;
+                background-color: #bdaa90;
+            }
+
+            .header-container {
+                width: 80%;
+                max-width: 600px;
+                margin-top: 2em;
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+            }
+
+            .cat-img {
+                width: 100%;
+                max-width: 800px;
+                flex: 1;
+                text-align: center;
+                color: white;
+                font-size: 80px;
+                -webkit-text-stroke: 3px black;
+            }
+
+            #p {
+                background-image: url("imgs/p.png");
+                background-position: center bottom;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+
+            #op {
+                background-image: url("imgs/op.png");
+                background-position: center bottom;
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="header-container">
+                <img class="title" src="imgs/popcat.svg" alt="POPCAT">
+                <div class="cat-img" id="p">0</div>
+                <div class="cat-img" id="op"></div>
+            </div>
+        </div>
+
+        <script>
+            const p = document.getElementById("p");
+            const op = document.getElementById("op");
+            let count = 0;
+
+            p.addEventListener("pointerdown", () => {
+                count += 1;
+                p.textContent = count;
+                p.style.display = "none";
+                op.style.display = "block";
+            });
+
+            window.addEventListener("pointerup", () => {
+                op.style.display = "none";
+                p.style.display = "block";
+            });
+        </script>
+    </body>
+</html>
